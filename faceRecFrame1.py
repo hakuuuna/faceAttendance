@@ -4,9 +4,8 @@ import numpy as np
 
 from tkinter import *
 import tkinter as tki
-from PIL import Image
-from PIL import ImageTk
 
+from PIL import ImageTk, Image
 import subprocess
 
 
@@ -36,6 +35,11 @@ video_capture = cv2.VideoCapture(0)
 
 
 
+youssef_image = face_recognition.load_image_file("./images/youssef.jpg")
+youssef_face_encoding = face_recognition.face_encodings(youssef_image)[0]
+
+
+
 jihane_image = face_recognition.load_image_file("./images/jihane.jpg")
 jihane_face_encoding = face_recognition.face_encodings(jihane_image)[0]
 
@@ -43,13 +47,6 @@ nasreddin_image = face_recognition.load_image_file("./images/nasreddin.jpg")
 nasreddin_face_encoding = face_recognition.face_encodings(nasreddin_image)[0]
 
 
-# Load a sample picture and learn how to recognize 
-obama_image = face_recognition.load_image_file("./images/obama.jpg")
-obama_face_encoding = face_recognition.face_encodings(obama_image)[0]
-
-# Load a second sample picture and learn how to recognize it.
-biden_image = face_recognition.load_image_file("./images/biden.jpg")
-biden_face_encoding = face_recognition.face_encodings(biden_image)[0]
 
 
 
@@ -60,29 +57,18 @@ video_capture.set(4, 450)
 # Create arrays of known face encodings and their names
 known_face_encodings = [
 
+
+
 jihane_face_encoding,
 nasreddin_face_encoding,
-nasreddin_face_encoding,
-nasreddin_face_encoding,
-nasreddin_face_encoding,
-jihane_face_encoding,
-nasreddin_face_encoding,
-    obama_face_encoding,
-    biden_face_encoding
+youssef_face_encoding
 ]
 known_face_names = [
 
 "jihane",
 "nasreddin",
-"nasreddin",
-"nasreddin",
-"nasreddin",
-"jihane",
-"nasreddin",
-    "Barack Obama",
-    "Joe Biden",
+"youssef"
 
-    
     
 ]
 
@@ -193,9 +179,9 @@ btn = tki.Button(root, text="STOP! and view Sheet", command = passList)
 btn.grid(column=0, padx=10,pady=--0)
 
 
-
-
 loop()
+
+
 
 
 

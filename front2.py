@@ -30,15 +30,12 @@ class Student:
         Gender = StringVar()
         Adress = StringVar()
         Mobile = StringVar()
-        #ImgPath = StringVar()
+        ImgPath = StringVar()
 
         # ++++++++++++++++++++++++++++++++++++++++++++++++++++FUNCTIONS
 
         def iExit():
-            iExit = tkinter.ms.askyesno(
-                "Students Management Sytem", "Confirm if You want to Exit")
-            if iExit > 0:
-                root.destroy()
+            root.destroy()
             return
 
         def clearData():
@@ -51,6 +48,8 @@ class Student:
             self.txtAdr.delete(0, END)
             self.txtMobile.delete(0, END)
             self.txtImgPath['text'] = ""
+            self.canvas.delete(ALL)
+            
             
             
         def addData():
@@ -60,8 +59,7 @@ class Student:
                 studentlist.delete(0,END)
                 studentlist.insert(END,(StdID.get(), FirstName.get(), LastName.get(), DoB.get(), Age.get(), Gender.get(), Adress.get(), Mobile.get(),self.txtImgPath['text']))
                 
-                #add into facial recognition file 
-                #os.system('python addLines.py FirstName StdID')
+                
                 
                 subprocess.call(["python3","addLines.py",FirstName.get() ,StdID.get()])
                 
@@ -111,7 +109,7 @@ class Student:
                 
         def searchDatabase():
             studentlist.delete(0,END)
-            for row in stdDatabase_BackEnd.searchData(StdID.get(), FirstName.get(), LastName.get(), DoB.get(), Age.get(), Gender.get(), Adress.get(), Mobile.get(), txtImgPath['text']):
+            for row in stdDatabase_BackEnd.searchData(StdID.get(), FirstName.get(), LastName.get(), DoB.get(), Age.get(), Gender.get(), Adress.get(), Mobile.get(), ImgPath.get()):
                 
                 studentlist.insert(END,row,str(""))
                 
@@ -119,9 +117,10 @@ class Student:
             if (len(StdID.get())!=0):
                 stdDatabase_BackEnd.deleteRec(sd[0])
             if (len(StdID.get())!=0):
-                stdDatabase_BackEnd.addStdRec(StdID.get(), FirstName.get(), LastName.get(), DoB.get(), Age.get(), Gender.get(), Adress.get(), Mobile.get(), ImgPath.get())
+                stdDatabase_BackEnd.addStdRec(StdID.get(), FirstName.get(), LastName.get(), DoB.get(), Age.get(), Gender.get(), Adress.get(), Mobile.get(), self.txtImgPath['text'])
                 studentlist.delete(0,END)
-                studentlist.insert(END,(StdID.get(), FirstName.get(), LastName.get(), DoB.get(), Age.get(), Gender.get(), Adress.get(), Mobile.get(), ImgPath.cget()))
+                
+                studentlist.insert(END,(StdID.get(), FirstName.get(), LastName.get(), DoB.get(), Age.get(), Gender.get(), Adress.get(), Mobile.get(),self.txtImgPath['text']))
 
         
 
@@ -144,9 +143,7 @@ class Student:
         def take_image():
             subprocess.Popen(['python3', 'photo_booth.py', '-o' , 'images', '-n' , '{}'.format(FirstName.get()) ])
             
-        def data():
-            #exec(open('{}'.format(name)).read())
-            subprocess.call(["python3","data.py"])
+        
                  
        
                 

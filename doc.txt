@@ -1,0 +1,146 @@
+
+
+
+
+
+modules required 
+
+datetime
+tkinter
+PIL
+from PIL import ImageTk, Image
+sqlite3
+csv
+face_recognition
+cv2
+numpy
+time
+imutils.video
+
+
+
+
+opencv >> 
+
+apt-get install python3-opencv
+apt-get install python3-opencv
+          
+
+
+
+
+in this project we try to finalize the project we did in 1st semester where we introduced the concept of facial recognition where we have this neurons network that trains on choosing the best measures to take based on the position of the face.. and these measures of the face like distance between eyes or distance btw nose and mouth are what diffrentiate a face from another 
+
+
+
+soo to apply this conncept we have chosen a project to mark attendance of students by using the facial recognition 
+this project not only does that but also have an automated system to add students to the database that includes the students inforamtion and their image.. and also a way to call back attendance sheets that were generated before by their date..
+
+
+
+
+the main menu contains 4 buttons and an exit button
+
+1.
+start button takes directly to the main detecting window which use the facial-recogntion module and generate a list of names that were detected during the facialRecogntion Script execution
+
+this list is taken as parameter to the next window which is the sheet of attendance where from the total list of students 
+> we give a value 'p' to the ones were detected 
+> and a value 'abs' to the rest 
+
+and we keep hold of that detected students list along with the hour and date when was generated
+
+
+2.
+students management button take you to a system that contains all the operations to create/delete/update/display/search students using sqlite3 as local database system along with the path of their images stored also locally 
+
+2 methods to get hold of the image 
+open new image > to browse for locally on you machine 
+take an image > to open a cam and take it directly from the cam 
+take an image requires to first fill up the FirstName Entry bicuz the image is named by the student firstName 
+
+
+
+3.
+Dtabase 
+linked directly to the Database
+where we fetch the total list of students displays some of their main details 
+
+
+
+4.
+a system to display the attendance sheets generated before, using the date and the hour of that excution 
+first it takes to a window where you choose the date and hour which are given as parameters to search for the list of students were present at that particular day and hour 
+>> and like before from the total list of students 
+> we give a value 'p' to the ones are on that list we search for 
+> and a value 'abs' to the rest 
+
+
+
+  
+
+next 
+we have the button start leading to the main functionality that detects faces using 
+"face_recognition" module for processing face encodings and recognizing face special spots measures that diffrentiates a face from another and comparing them with images we already have stored 
+
+"cv2" module to manipulate and manage frames ,images and videoCapture 
+
+each time we have a new face detected best matches the ones we have stored we add its name to our detected faces list 
+this list is passed as parameter to the new window script excuted with "subprocess" module triggered with the button "stop and view presence sheet"
+
+in that window we have a table in where we give value "p" to the names in the list and value "abs" to the rest and we save the list into a textFile with the date and hour 
+
+
+back to the menu 
+in the forth button view sheet 
+we have a calendarView built using the "calendar" module from python 
+that takes note of the date chosen by the user 
+and a "spinBox" frame taking note of the hour 
+
+these information are used to search for the list detected on that date in the textFile we mentionned before 
+once we have that list,.. as before we get a Table in where we give "p" to names in the list and "aps" to names that aren't 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+

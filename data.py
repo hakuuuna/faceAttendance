@@ -61,30 +61,6 @@ class Student:
         DataFrameRIGHT = LabelFrame(DataFrame, bd=1, font=('arial', 15, 'bold'), text="Students informations \n",width=150, height=600, padx=20, pady=3, bg="black", relief=RIDGE)
         DataFrameRIGHT.pack(side=RIGHT)
 
-        
-
-        #ButtonFrame = Frame(MainFrame, bd=1, width=200, height=15, relief=RIDGE, bg="black")
-        #ButtonFrame.pack(side=LEFT)
-
-        
-
-        
-
-        
-
-        
-
-        # ++++++++++++++++++++++++++++++++++++++++++++++++++++BUTTON WIDGETS
-
-        #self.btnAddDate = Button(ButtonFrame, font=('arial', 20, 'bold'), text="Stop", height=1, width=8, bd=4)
-        #self.btnAddDate.grid(row=0, column=0)
-
-        
-
-        #self.btnExit = Button(ButtonFrame, font=(   'arial', 10, 'bold'), text="go back", height=1, width=4, bd=4, command=iExit)
-        #self.btnExit.grid(row=0, column=6)
-
-
 
         
 
@@ -103,13 +79,11 @@ class Student:
         tree.heading("one", text="Student Name")
         tree.heading("two", text="LastName")
         tree.heading("three", text="DoB")
-        tree.heading("four", text="age")
+        tree.heading("four", text="gender")
         
      
         
-        # for col in tree["columns"]:
-            # tree.column(col, width=tkFont.Font().measure(col.title()))
-            
+
         cursor = connection.execute("SELECT * FROM " + TABLE_NAME + " ;")
         
         
@@ -119,7 +93,7 @@ class Student:
         
         
         for row in cursor:
-            tree.insert('', 'end', values=(row[2], row[3], row[4], row[5] ))
+            tree.insert('', 'end', values=(row[2], row[3], row[4], row[6] ))
             tree.pack()
         
 

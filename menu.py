@@ -82,7 +82,9 @@ def sheetDate():
    subprocess.call(["python3","sheetDate.py"])
 
    
-
+def iExit():
+   main.destroy()
+   return
 
    
 but1=Button(frame,padx=5,pady=5,width=39,bg='white',fg='black',relief=GROOVE,text='Start',font=('helvetica 15 bold'), command = start)
@@ -98,7 +100,7 @@ but4=Button(frame,padx=5,pady=5,width=39,bg='white',fg='black',relief=GROOVE,tex
 but4.place(x=5,y=322)
 
 
-but5=Button(frame,padx=5,pady=5,width=5,bg='white',fg='black',relief=GROOVE,text='EXIT',font=('helvetica 15 bold'))
+but5=Button(frame,padx=5,pady=5,width=5,bg='white',fg='black',relief=GROOVE,text='EXIT',font=('helvetica 15 bold'), command= iExit)
 but5.place(x=190,y=448)
 
 

@@ -6,10 +6,6 @@ f = open('faceRecFrame1.py',"r+")
 
 
 
-#line = []
-#line.append(StdID)
-#line.append(FirstName)
-
 import sys 
 
 
@@ -27,8 +23,8 @@ for i, line in enumerate(Lines):
     
     if line.startswith(searchquery0):
         
-        Lines[i+1] = '\n\n{}'.format(FirstName) + "_image = face_recognition.load_image_file(./images/\"" + '{}'.format(FirstName) + ".jpg\")\n"
-        Lines[i+2] = '\n\n{}'.format(FirstName) +"_face_encoding = face_recognition.face_encodings(" + '{}'.format(FirstName) + "_image)[0]\n\n"
+        Lines[i+1] = '\n\n{}'.format(FirstName) + "_image = face_recognition.load_image_file(\"./images/"+'{}'.format(FirstName)+".jpg\")"
+        Lines[i+2] = '\n{}'.format(FirstName) +"_face_encoding = face_recognition.face_encodings(" + '{}'.format(FirstName) + "_image)[0]\n\n"
     
     
     if line.startswith(searchquery1):
